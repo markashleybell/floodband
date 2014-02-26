@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.floodband.co.uk
+RewriteRule (.*) http://floodband.co.uk/$1 [R=301,L]
+AddDefaultCharset UTF-8
+AddType 'text/html; charset=UTF-8' .html
+AddLanguage en-GB .html .htm .css .js
