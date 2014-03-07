@@ -1,0 +1,4 @@
+*.sublime-workspace
+*.cfg
+*.cfg.live
+.DS_Store
