@@ -8,9 +8,17 @@
             }
             a {
                 color: #000;
+                text-decoration: none;
             }
             a:hover {
                 color: #cc0000;
+            }
+            a.social {
+                vertical-align: middle;
+            }
+            a.social img {
+                vertical-align: middle;
+                margin: 0 10px 1px 20px;
             }
         </style>
     </head>
@@ -18,8 +26,19 @@
         <table width="100%" height="100%">
             <tr>
                 <td width="100%" height="100%" align="center" valign="middle">
-                    <iframe width="400" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/25288174&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe><br /><br />
-                    <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#102;&#x6c;&#x6f;&#x6f;&#100;&#x62;&#x61;&#110;&#x64;&#46;&#x63;&#x6f;&#x2e;&#x75;&#x6b;">&#105;&#110;&#102;&#x6f;&#64;&#102;&#x6c;&#111;&#111;&#x64;&#98;&#97;&#110;&#x64;&#46;&#x63;&#111;&#x2e;&#117;&#107;</a>
+                    <table width="600">
+                        <tr>
+                            <td valign="top">
+                                <iframe width="400" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/25288174&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
+                            </td>
+                            <td valign="top">
+                                <!-- Icons by http://buildinternet.com/project/mightyicons/ -->
+                                <a class="social" title="Email" href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#102;&#x6c;&#x6f;&#x6f;&#100;&#x62;&#x61;&#110;&#x64;&#46;&#x63;&#x6f;&#x2e;&#x75;&#x6b;"><img alt="Email" width="16" height="16" src="{{ url_for('static', filename='img/email.png') }}" >&#105;&#110;&#102;&#x6f;&#64;&#102;&#x6c;&#111;&#111;&#x64;&#98;&#97;&#110;&#x64;&#46;&#x63;&#111;&#x2e;&#117;&#107;</a><br /><br />
+                                <a class="social" title="Twitter" href="https://twitter.com/floodbanduk"><img alt="Twitter" width="16" height="16" src="{{ url_for('static', filename='img/twitter.png') }}" >https://twitter.com/floodbanduk</a><br /><br />
+                                <a class="social" title="Facebook" href="https://facebook.com/floodbanduk"><img alt="Facebook" width="16" height="16" src="{{ url_for('static', filename='img/facebook.png') }}" >https://facebook.com/floodbanduk</a><br /><br />
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>
