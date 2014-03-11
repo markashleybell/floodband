@@ -1,11 +1,53 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Flood</title>
+        <title>Flood: an original blues rock band based in Devon</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <style type="text/css">
+            /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+            html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+            *, *:before, *:after {
+                -moz-box-sizing: border-box; 
+                -webkit-box-sizing: border-box; 
+                box-sizing: border-box;
+            }
+
+            
+
             body {
                 font-family: Helvetica, Arial, sans-serif;
-                background-color: #D5D5D5;
+                background-color: #D1EAFC;
             }
+            
+            /* Dead Simple Grid (c) 2012 Vladimir Agafonkin */
+
+            .col {
+                padding: 10px 10px 0 10px;
+            }
+            .row .row {
+                margin: 0 -10px;
+            }
+
+            .row:before, .row:after {
+                content: "";
+                display: table;
+            }
+            .row:after {
+                clear: both;
+            }
+
+            @media only screen {
+                .col {
+                    float: left;
+                    width: 100%;
+
+                    -webkit-box-sizing: border-box;
+                       -moz-box-sizing: border-box;
+                            box-sizing: border-box;
+                }
+            }
+
             a {
                 color: #000;
                 text-decoration: none;
@@ -15,33 +57,80 @@
             }
             a.social {
                 vertical-align: middle;
+                font-weight: bold;
             }
             a.social img {
                 vertical-align: middle;
-                margin: 0 10px 1px 20px;
+                margin: 0 10px 1px 0;
+            }
+            h1, p {
+                margin: 0;
+                padding: 0 0 10px 0;
+            }
+            h1 {
+                font-size: 14px;
+                font-weight: bold;
+            }
+            p {
+                font-size: 14px;   
+                line-height: 1.5em;
+            }
+            p.intro {
+                margin-bottom: 20px;
+            }
+
+            .player iframe {
+                    width: 100%;
+                    height: 500px;
+                }     
+
+            @media only screen and (min-width: 740px) {
+                .col {
+                    padding: 0 10px 0 10px;
+                }
+
+                .player { width: 420px; }
+                .details { width: 300px; }
+
+                .container {
+                    position: absolute;
+                    top: 0; left: 0; bottom: 0; right: 0;
+                }
+
+                .content-area {
+                    max-height: 500px;
+                    max-width: 740px;
+                    margin-top: 0;
+                    margin: auto;
+                    position: absolute;
+                    top: 0; left: 0; bottom: 0; right: 0;
+                }      
+
+                .player iframe {
+                    width: 400px;
+                    height: 500px;
+                }    
             }
         </style>
     </head>
     <body>
-        <table width="100%" height="100%">
-            <tr>
-                <td width="100%" height="100%" align="center" valign="middle">
-                    <table width="600">
-                        <tr>
-                            <td valign="top">
-                                <iframe width="400" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/25288174&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
-                            </td>
-                            <td valign="top">
-                                <!-- Icons by http://buildinternet.com/project/mightyicons/ -->
-                                <a class="social" title="Email" href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#102;&#x6c;&#x6f;&#x6f;&#100;&#x62;&#x61;&#110;&#x64;&#46;&#x63;&#x6f;&#x2e;&#x75;&#x6b;"><img alt="Email" width="16" height="16" src="{{ url_for('static', filename='img/email.png') }}" >&#105;&#110;&#102;&#x6f;&#64;&#102;&#x6c;&#111;&#111;&#x64;&#98;&#97;&#110;&#x64;&#46;&#x63;&#111;&#x2e;&#117;&#107;</a><br /><br />
-                                <a class="social" title="Twitter" href="https://twitter.com/floodbanduk"><img alt="Twitter" width="16" height="16" src="{{ url_for('static', filename='img/twitter.png') }}" >https://twitter.com/floodbanduk</a><br /><br />
-                                <a class="social" title="Facebook" href="https://facebook.com/floodbanduk"><img alt="Facebook" width="16" height="16" src="{{ url_for('static', filename='img/facebook.png') }}" >https://facebook.com/floodbanduk</a><br /><br />
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+        <div class="container">
+            <div class="content-area">
+                <div class="row">
+                    <div class="col player">
+                        <iframe scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/25288174&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
+                    </div>
+                    <div class="col details">
+                        <h1>Flood</h1>
+                        <p class="intro">Flood are a three-piece original Blues Rock band based in Devon, consisting of Ian Lightley (guitar, vocals), Tom Anderson (bass) and Mark Bell (drums).</p>
+                        <!-- Icons by http://buildinternet.com/project/mightyicons/ -->
+                        <p><a class="social" title="Email" href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#102;&#x6c;&#x6f;&#x6f;&#100;&#x62;&#x61;&#110;&#x64;&#46;&#x63;&#x6f;&#x2e;&#x75;&#x6b;"><img alt="Email" width="16" height="16" src="{{ url_for('static', filename='img/email.png') }}" >&#105;&#110;&#102;&#x6f;&#64;&#102;&#x6c;&#111;&#111;&#x64;&#98;&#97;&#110;&#x64;&#46;&#x63;&#111;&#x2e;&#117;&#107;</a></p>
+                        <p><a class="social" title="Twitter" href="https://twitter.com/floodbanduk"><img alt="Twitter" width="16" height="16" src="{{ url_for('static', filename='img/twitter.png') }}" >https://twitter.com/floodbanduk</a></p>
+                        <p><a class="social" title="Facebook" href="https://facebook.com/floodbanduk"><img alt="Facebook" width="16" height="16" src="{{ url_for('static', filename='img/facebook.png') }}" >https://facebook.com/floodbanduk</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,7 +139,6 @@
 
           ga('create', 'UA-48755454-1', 'auto');
           ga('send', 'pageview');
-
         </script>
     </body>
 </html>
