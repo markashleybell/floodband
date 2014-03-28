@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Flood: an original blues rock band based in Devon</title>
+        <title>Flood: an original blues rock band based in Devon, UK</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <style type="text/css">
             /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
@@ -122,23 +122,42 @@
                     </div>
                     <div class="col details">
                         <h1>Flood</h1>
-                        <p class="intro">Flood are a three-piece original Blues Rock band based in Devon, consisting of Ian Lightley (guitar, vocals), Tom Anderson (bass) and Mark Bell (drums).</p>
+                        <p class="intro">Flood are a three-piece original blues rock band based in Devon, UK, consisting of Ian Lightley (guitar, vocals), Tom Anderson (bass) and Mark Bell (drums).</p>
                         <!-- Icons by http://buildinternet.com/project/mightyicons/ -->
-                        <p><a class="social" title="Email" href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#102;&#x6c;&#x6f;&#x6f;&#100;&#x62;&#x61;&#110;&#x64;&#46;&#x63;&#x6f;&#x2e;&#x75;&#x6b;"><img alt="Email" width="16" height="16" src="{{ url_for('static', filename='img/email.png') }}" >&#105;&#110;&#102;&#x6f;&#64;&#102;&#x6c;&#111;&#111;&#x64;&#98;&#97;&#110;&#x64;&#46;&#x63;&#111;&#x2e;&#117;&#107;</a></p>
-                        <p><a class="social" title="Twitter" href="https://twitter.com/floodbanduk"><img alt="Twitter" width="16" height="16" src="{{ url_for('static', filename='img/twitter.png') }}" >https://twitter.com/floodbanduk</a></p>
-                        <p><a class="social" title="Facebook" href="https://facebook.com/floodbanduk"><img alt="Facebook" width="16" height="16" src="{{ url_for('static', filename='img/facebook.png') }}" >https://facebook.com/floodbanduk</a></p>
+                        <p><a class="social" id="email_link" title="Email" href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#102;&#x6c;&#x6f;&#x6f;&#100;&#x62;&#x61;&#110;&#x64;&#46;&#x63;&#x6f;&#x2e;&#x75;&#x6b;"><img alt="Email" width="16" height="16" src="{{ url_for('static', filename='img/email.png') }}" >&#105;&#110;&#102;&#x6f;&#64;&#102;&#x6c;&#111;&#111;&#x64;&#98;&#97;&#110;&#x64;&#46;&#x63;&#111;&#x2e;&#117;&#107;</a></p>
+                        <p><a class="social" id="twitter_link" title="Twitter" href="https://twitter.com/floodbanduk"><img alt="Twitter" width="16" height="16" src="{{ url_for('static', filename='img/twitter.png') }}" >https://twitter.com/floodbanduk</a></p>
+                        <p><a class="social" id="facebook_link" title="Facebook" href="https://facebook.com/floodbanduk"><img alt="Facebook" width="16" height="16" src="{{ url_for('static', filename='img/facebook.png') }}" >https://facebook.com/floodbanduk</a></p>
                     </div>
                 </div>
             </div>
         </div>
         <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            function addListener(element, type, callback) {
+                if (element.addEventListener) element.addEventListener(type, callback);
+                else if (element.attachEvent) element.attachEvent('on' + type, callback);
+            }
 
-          ga('create', 'UA-48755454-1', 'auto');
-          ga('send', 'pageview');
+            function externalLinkClick(label) {
+                ga('send', {
+                  'hitType': 'event',          // Required.
+                  'eventCategory': 'External Link',   // Required.
+                  'eventAction': 'Click',      // Required.
+                  'eventLabel': label,
+                });
+                var tmp = 0;
+            }
+
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-48755454-1', 'auto');
+            ga('send', 'pageview');
+
+            addListener(document.getElementById('email_link'), 'click', function() { externalLinkClick('Email'); });
+            addListener(document.getElementById('twitter_link'), 'click', function() { externalLinkClick('Twitter'); });
+            addListener(document.getElementById('facebook_link'), 'click', function() { externalLinkClick('Facebook'); });
         </script>
     </body>
 </html>
