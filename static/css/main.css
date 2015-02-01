@@ -58,7 +58,7 @@ html {
 
 body {
   background: url(../img/bg.jpg) #38c0f2 0 0 no-repeat;
-  background-size: cover;
+  background-size: contain;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5em;
   font-size: 14px;
@@ -78,8 +78,14 @@ h1 {
   font-size: 22px;
 }
 
-p, img, table, .embed-container {
+p, img, dl, .embed-container {
   margin-top: 15px;
+}
+
+.box p a, .box dd a {
+  color: #FFFFFF;
+  background-color: #040D11;
+  padding: 2px 4px;
 }
 
 .container {
@@ -118,16 +124,6 @@ p, img, table, .embed-container {
   height: 100%;
 }
 
-@media (min-width: 768px) {
-  .content-1, .content-2 {
-    width: 50%;
-  }
-}
-@media (min-width: 1000px) {
-  .container {
-    margin: 0 auto;
-  }
-}
 .header img {
   margin-top: 20px;
 }
@@ -173,8 +169,34 @@ p, img, table, .embed-container {
   color: #000;
 }
 
-.gig-date {
+.mailing input {
+  padding: 11px 10px 9px 10px;
+  border: solid 1px #040D11;
+  border-radius: 3px;
+}
+.mailing input[type=submit] {
+  border: solid 1px #040D11;
+  background-color: #040D11;
+  text-transform: uppercase;
   font-weight: bold;
+  color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.gigs {
+  overflow: auto;
+}
+.gigs dt {
+  margin-top: 5px;
+  font-weight: bold;
+  float: left;
+  clear: left;
+  width: 110px;
+}
+.gigs dd {
+  margin-top: 5px;
+  float: left;
 }
 
 #tweet-container {
@@ -183,4 +205,32 @@ p, img, table, .embed-container {
 #tweet-container span {
   font-weight: bold;
   display: block;
+}
+
+.footer {
+  font-family: 'primetimeregular';
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .content-1, .content-2 {
+    width: 50%;
+  }
+}
+@media (min-width: 1000px) {
+  .container {
+    margin: 0 auto;
+  }
+
+  .header img {
+    margin-top: 40px;
+  }
+}
+@media (min-width: 1450px) {
+  body {
+    background-size: cover;
+  }
 }

@@ -31,51 +31,43 @@
                     </ul>
                 </div>
                 <div class="content-1 block">
-                    
                     <div class="music box">
                         <h1>New Album Out Now</h1>
-                        <p>Debut album <strong>'Flood'</strong> is available now on <a href="">iTunes</a>, <a href="">Google Play</a> and <a href="">BandCamp</a>.</p>
+                        <p>Debut album <strong>'Flood'</strong> released 10/02/2015: available now on <a href="">iTunes</a>, <a href="">Google Play</a> and <a href="">BandCamp</a>.</p>
                         <ul class="tracklisting">
                             <li><a href=""><span class="icon-play"></span> Play Fuzzbender</a></li>
                             <li><a href=""><span class="icon-play"></span> Play Take The Blame</a></li>
                         </ul>
                         <img src="http://lorempixel.com/768/768/abstract/1/">
-                        
                         <!-- <div class="embed-container soundcloud">
                             <iframe scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/25288174&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
                             <iframe scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/25288174&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
                         </div> -->
                     </div>
+                    <div class="mailing box">
+                        <h1>Mailing List</h1>
+                        <p>Join our mailing list for (very!) occasional updates:</p>
+                        <form action="" method="post">
+                            <p><input type="text" value="" placeholder="Email address"> 
+                            <input class="button-primary" type="submit" value="Sign Up">
+                        </form>
+                    </div>
                 </div>
                 <div class="content-2 block">
                     <div class="gigs box">
                         <h1>Upcoming Gigs</h1>
-                        <table>
-                            <!-- <tr>
-                                <td class="gig-date">Fri 30th Jan</td>
-                                <td><a href="https://www.facebook.com/thecarriersinnbude" target="_blank">The Carriers Inn, Bude</a></td>
-                            </tr> -->
-                            <tr>
-                                <td class="gig-date">Thu 19th Feb</td>
-                                <td><a href="http://www.thebarley.com/" target="_blank">The Barley Sheaf, Liskeard</a></td>
-                            </tr>
-                            <tr>
-                                <td class="gig-date">Sat 28th Feb</td>
-                                <td><a href="https://www.facebook.com/pages/The-Nowhere-Inn/185989338077914" target="_blank">The Nowhere Inn, Plymouth</a></td>
-                            </tr>
-                            <tr>
-                                <td class="gig-date">Sun 1st Mar</td>
-                                <td><a href="http://www.thistlepark.com/" target="_blank">The Thistle Park Tavern, Plymouth</a></td>
-                            </tr>
-                            <tr>
-                                <td class="gig-date">Fri 6th Mar</td>
-                                <td><a href="http://www.bluesbarandgrill.co.uk/" target="_blank">The Blues Bar &amp; Grill, Plymouth</a></td>
-                            </tr>
-                            <tr>
-                                <td class="gig-date">Sat 14th Mar</td>
-                                <td><a href="http://www.theglobelooe.co.uk/" target="_blank">The Globe Inn, Looe</a></td>
-                            </tr>
-                        </table>
+                        <dl>
+                            <dt class="gig-date">Thu 19th Feb</dt>
+                            <dd><a href="http://www.thebarley.com/" target="_blank">The Barley Sheaf, Liskeard</a></dd>
+                            <dt class="gig-date">Sat 28th Feb</dt>
+                            <dd><a href="https://www.facebook.com/pages/The-Nowhere-Inn/185989338077914" target="_blank">The Nowhere Inn, Plymouth</a></dd>
+                            <dt class="gig-date">Sun 1st Mar</dt>
+                            <dd><a href="http://www.thistlepark.com/" target="_blank">The Thistle Park Tavern, Plymouth</a></dd>
+                            <dt class="gig-date">Fri 6th Mar</dt>
+                            <dd><a href="http://www.bluesbarandgrill.co.uk/" target="_blank">The Blues Bar &amp; Grill, Plymouth</a></dd>
+                            <dt class="gig-date">Sat 14th Mar</dt>
+                            <dd><a href="http://www.theglobelooe.co.uk/" target="_blank">The Globe Inn, Looe</a></dd>
+                        </dl>
                     </div>
                     <div class="tweets box">
                         <h1>Latest</h1>
@@ -87,7 +79,7 @@
                     </div>
                 </div>
                 <div class="footer block">
-                    <p>All content &copy; 2015 Flood</p>
+                    <p>All Content Copyright Flood 2015</p>
                 </div>
             </div>
         </div>
@@ -110,6 +102,10 @@
                     });
                 });
 
+                ﻿function activeUrls(text) {
+                    return text.replace(/\s(https?:\/\/[^\s\<]+)(\s)?/gi, ' <a href="$1">$1</a>$2');
+                }
+
                 $.ajax({
                     url: '/statuses',
                     data: {},
@@ -118,7 +114,7 @@
                     success: function(data, status, request) {
                         var output = [];
                         $.each(data.statuses, function(i, item) {
-                            output.push('<p><span>' + moment(item.created_at).fromNow() + '</span>' + item.text + '</p>');
+                            output.push('<p><span>' + moment(item.created_at).fromNow() + '</span>' + activeUrls(item.text) + '</p>');
                         });
                         $('#tweet-container').html(output.join(''));
                     },
