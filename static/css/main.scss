@@ -114,6 +114,7 @@ p, img, dl, .embed-container {
     border-radius: 3px;
     background-color: rgba(50, 187, 237, 0.46);
     padding: 15px 20px 20px 20px;
+    border: solid 1px #169DAE;
 }
 
 .embed-container { 
@@ -154,6 +155,7 @@ p, img, dl, .embed-container {
         display: inline-block;
         padding: 0;
         margin: 0;
+        line-height: 1.5em;
         &:before {
             content: '/ '
         }
@@ -233,6 +235,9 @@ p, img, dl, .embed-container {
 @media (min-width: 768px) {
     .content-1, .content-2 { 
         width: 50%; 
+    }
+    .nav li {
+        line-height: 1.5em;
     }
 }
 

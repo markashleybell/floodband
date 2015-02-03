@@ -50,7 +50,7 @@ def statuses():
         try:
             client = TwitterClient(consumer_key, consumer_secret, access_token)
             response = client.api.statuses.user_timeline.get(screen_name='floodbanduk', 
-                                                             count=3,
+                                                             count=4,
                                                              trim_user=True,
                                                              exclude_replies=True)
             statuses = response.data
