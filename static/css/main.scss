@@ -133,8 +133,6 @@ p, img, dl, .embed-container {
     height: 100%; 
 }
 
-
-
 .header {
     img {
         margin-top: 20px;
@@ -177,10 +175,17 @@ p, img, dl, .embed-container {
     li {
         text-transform: uppercase;
         line-height: 1.8em;
+        vertical-align: top;
     }
     a {
         text-decoration: none;
         color: #000;   
+        vertical-align: top;
+    }
+    img.loader {
+        display: none;
+        margin: 12px 0 0 10px;
+        vertical-align: top;
     }
 }
 

@@ -166,10 +166,17 @@ p, img, dl, .embed-container {
 .tracklisting li {
   text-transform: uppercase;
   line-height: 1.8em;
+  vertical-align: top;
 }
 .tracklisting a {
   text-decoration: none;
   color: #000;
+  vertical-align: top;
+}
+.tracklisting img.loader {
+  display: none;
+  margin: 12px 0 0 10px;
+  vertical-align: top;
 }
 
 .mailing input {

@@ -35,13 +35,13 @@
                         <h1>New Album Out Now</h1>
                         <p>Debut album <strong>'Flood'</strong> released 10/02/2015: available now on <a href="">iTunes</a>, <a href="">Google Play</a> and <a href="">BandCamp</a>.</p>
                         <ul class="tracklisting">
-                            <li><a href="https://soundcloud.com/floodbanduk/hourglass-blues" title="Fuzzbender" data-soundcloudid="147717178"><span class="icon-play"></span> Play Fuzzbender</a></li>
-                            <li><a href="https://soundcloud.com/floodbanduk/wide-open" title="Take The Blame" data-soundcloudid="147717103"><span class="icon-play"></span> Play Take The Blame</a></li>
+                            <li><a href="https://soundcloud.com/floodbanduk/hourglass-blues" title="Fuzzbender" data-soundcloudid="147717178"><span class="icon-play"></span> Play Fuzzbender</a><img class="loader" src="{{ url_for('static', filename='img/ajax-loader.gif') }}"></li>
+                            <li><a href="https://soundcloud.com/floodbanduk/wide-open" title="Take The Blame" data-soundcloudid="147717103"><span class="icon-play"></span> Play Take The Blame</a><img class="loader" src="{{ url_for('static', filename='img/ajax-loader.gif') }}"></li>
                         </ul>
                         <img src="http://lorempixel.com/768/768/abstract/1/">
                     </div>
                     <div class="about box">
-                        <h1>About The Band</h1>
+                        <h1>About</h1>
                         <p>Flood are a three-piece original blues rock band based in Plymouth, UK, consisting of Ian Lightley (guitar, vocals), Tom Anderson (bass) and Mark Bell (drums).</p>
                     </div>
                     <div class="mailing box">
@@ -124,32 +124,49 @@
                             window.location = link.attr('href');
                         });
                     });
+                    var controls = $('ul.tracklisting a span');
+                    var loaders = $('ul.tracklisting img.loader');
                     $('ul.tracklisting a').on('click', function(e) {
                         e.preventDefault();
                         var link = $(this);
                         var soundcloudid = link.data('soundcloudid');
                         var title = link.attr('title');
+                        var icon = link.find('span');
+                        var loader = link.next('img.loader');
                         // If a sound is currently playing
                         if(_sound !== null) {
                             // If the currently playing song is the same one 
-                            // that was just clicked, pause it
-                            if(_soundcloudid == soundcloudid) {
-                                _sound.pause();
+                            // that was just clicked, toggle pause state
+                            if(_soundcloudid === soundcloudid) {
+                                if(!_sound.paused) {
+                                    icon.removeClass().addClass('icon-play');
+                                    _sound.pause();
+                                } else {
+                                    icon.removeClass().addClass('icon-pause');
+                                    _sound.play();
+                                }
                             } else {
                                 _sound.destruct();
+                                controls.removeClass().addClass('icon-play');
+                                loader.css('display', 'inline');
                                 _trackLinkClick('Song Play', 'Click', title, function() {
                                     SC.stream('/tracks/' + soundcloudid, function(sound) {
-                                        _sound = sound;
                                         _soundcloudid = soundcloudid;
+                                        _sound = sound;
+                                        icon.removeClass().addClass('icon-pause');
+                                        loader.hide();
                                         _sound.play();
                                     });
                                 });
                             }
                         } else {
+                            loader.css('display', 'inline');
                             _trackLinkClick('Song Play', 'Click', title, function() {
                                 SC.stream('/tracks/' + soundcloudid, function(sound) {
-                                    _sound = sound;
                                     _soundcloudid = soundcloudid;
+                                    _sound = sound;
+                                    icon.removeClass().addClass('icon-pause');
+                                    loader.hide();
                                     _sound.play();
                                 });
                             });
