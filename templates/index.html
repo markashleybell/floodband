@@ -47,8 +47,8 @@
                     <div class="mailing box">
                         <h1>Mailing List</h1>
                         <p>Join our mailing list for (very!) occasional updates:</p>
-                        <form action="" method="post">
-                            <p><input type="text" value="" placeholder="Email address"> 
+                        <form id="mailing-list-subscribe" action="/subscribe" method="post">
+                            <p><input type="text" name="email" value="" placeholder="Email address"> 
                             <input class="button-primary" type="submit" value="Sign Up">
                         </form>
                     </div>
@@ -171,6 +171,20 @@
                                 });
                             });
                         }
+                    });
+                    $('#mailing-list-subscribe').on('submit', function(e) {
+                        var form = $(this);
+                        e.preventDefault();
+                        $.ajax({
+                            url: form.attr('action'),
+                            data: form.serialize(),
+                            type: 'POST'
+                        }).done(function(data, status, req) {
+                            form.replaceWith('<p><strong>Thanks! You\'re all signed up. You can remove yourself from our list by clicking on the \'unsubscribe\' link at the bottom of any of our emails.</strong></p>');
+                        }).fail(function(req, status, error) {
+                            form.find('.error').remove();
+                            form.append('<p class="error"><strong>Sorry, there was a problem signing you up! Please check you typed your email address correctly.</strong></p>');
+                        });
                     });
                 };
                 return {

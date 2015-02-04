@@ -5,6 +5,8 @@ from flask.json import JSONEncoder
 from birdy.twitter import AppClient, TwitterAuthError
 from werkzeug.contrib.cache import MemcachedCache
 import time
+from createsend import *
+
 
 class ApiResponse(Response):
     def __init__(self, payload=None, status_code=200, message='OK'):
@@ -26,12 +28,13 @@ app.config.from_pyfile('config.cfg')
 # Set up cache
 cache = MemcachedCache(['127.0.0.1:11211'])
 
-@app.route("/")
+
+@app.route('/')
 def index():
     return render_template('index.html', test='HURRAH')
 
 
-@app.route("/statuses")
+@app.route('/statuses')
 def statuses():
     statuses = cache.get('statuses')
 
@@ -67,8 +70,7 @@ def statuses():
     return jsonify({ 'statuses': projection })
 
 
-
-@app.route("/tracks")
+@app.route('/tracks')
 def tracks():
     client = soundcloud.Client(client_id=app.config['SOUNDCLOUD_CLIENT_ID'],
                                client_secret=app.config['SOUNDCLOUD_CLIENT_SECRET'],
@@ -80,13 +82,23 @@ def tracks():
     return jsonify({ 'tracks': [{ 'id': t.id, 'title': t.title } for t in tracks] })
 
 
+@app.route('/subscribe', methods=['POST'])
+def subscribe():
+    email = request.form['email']
+    subscriber = Subscriber({'api_key': app.config['CM_CLIENT_API_KEY']})
+    result = subscriber.add(app.config['CM_LIST_ID'], email, '', [], True)
+    return jsonify({ 'success': True })
+
+
 @app.route('/robots.txt')
 def robots():
     return send_from_directory(app.static_folder, request.path[1:])
+
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(app.static_folder, request.path[1:])
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     app.run(debug=True, threaded=True)

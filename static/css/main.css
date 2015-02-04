@@ -82,6 +82,10 @@ p, img, dl, .embed-container {
   margin-top: 15px;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .box p a, .box dd a {
   color: #FFFFFF;
   background-color: #040D11;

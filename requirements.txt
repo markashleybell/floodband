@@ -3,6 +3,7 @@ Jinja2==2.7.2
 MarkupSafe==0.18
 Werkzeug==0.9.4
 birdy==0.2
+createsend==4.0.0
 fudge==1.0.3
 itsdangerous==0.23
 oauthlib==0.7.2
