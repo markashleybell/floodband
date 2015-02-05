@@ -31,7 +31,22 @@ cache = MemcachedCache(['127.0.0.1:11211'])
 
 @app.route('/')
 def index():
-    return render_template('index.html', test='HURRAH')
+    return render_template('index.html')
+
+
+@app.route('/music')
+def music():
+    return render_template('music.html')
+
+
+@app.route('/links')
+def links():
+    return render_template('links.html')
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 
 @app.route('/statuses')
