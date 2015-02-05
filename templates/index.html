@@ -71,7 +71,11 @@
                     </div>
                     <div class="tweets box">
                         <h1>Latest</h1>
-                        <div id="tweet-container"></div>
+                        <div id="tweet-container">
+                            <div class="tweet-container-placeholder">
+                                Loading <img src="{{ url_for('static', filename='img/ajax-loader.gif') }}">
+                            </div>
+                        </div>
                     </div>
                     <div class="video box">
                         <h1>Live Video</h1>

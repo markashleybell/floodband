@@ -231,6 +231,14 @@ strong {
         font-weight: bold;
         display: block;
     }
+    div.tweet-container-placeholder {
+        text-align: center;
+        padding: 150px 0;
+        font-weight: bold;
+        img {
+            display: inline;
+        }
+    }
 }
 
 .footer {
