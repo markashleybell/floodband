@@ -85,7 +85,7 @@ h1 {
     font-size: 22px;
 }
 
-p, img, dl, .embed-container {
+p, img, dl, ul, .embed-container {
     margin-top: 15px;
 }
 
@@ -93,7 +93,7 @@ strong {
     font-weight: bold;
 }
 
-.box p a, .box dd a {
+.box p a, .box dd a, .external-links a {
     color: #FFFFFF;
     background-color: #040D11;
     padding: 2px 4px;
@@ -190,6 +190,13 @@ strong {
         display: none;
         margin: 12px 0 0 10px;
         vertical-align: top;
+    }
+}
+
+.external-links {
+    font-size: 16px;
+    li {
+        margin: 5px 0 5px 0;
     }
 }
 
