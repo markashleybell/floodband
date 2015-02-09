@@ -28,7 +28,7 @@ var FloodSite = (function($, window, moment) {
             },
             error: function(request, status, error) { console.log(error); }
         });
-        $('a.social').on('click', function(e) {
+        $('a.social, ul.external-links a').on('click', function(e) {
             e.preventDefault();
             var link = $(this);
             _trackLinkClick('External Link', 'Click', link.attr('title'), function() {

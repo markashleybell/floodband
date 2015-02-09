@@ -68,7 +68,7 @@ def statuses():
         try:
             client = TwitterClient(consumer_key, consumer_secret, access_token)
             response = client.api.statuses.user_timeline.get(screen_name='floodbanduk', 
-                                                             count=4,
+                                                             count=10,
                                                              trim_user=True,
                                                              exclude_replies=True)
             statuses = response.data
@@ -82,7 +82,7 @@ def statuses():
 
     projection = [{ 'created_at': s['created_at'], 'text': s['text'] } for s in statuses]
 
-    return jsonify({ 'statuses': projection })
+    return jsonify({ 'statuses': projection[:4] })
 
 
 @app.route('/tracks')

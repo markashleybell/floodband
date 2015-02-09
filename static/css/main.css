@@ -59,6 +59,7 @@ html {
 body {
   background: url(../img/bg.jpg) #38c0f2 0 0 no-repeat;
   background-size: contain;
+  min-height: 1000px;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5em;
   font-size: 14px;
@@ -189,6 +190,10 @@ strong {
 .external-links li {
   margin: 5px 0 5px 0;
 }
+.external-links li span {
+  display: block;
+  font-size: 13px;
+}
 
 .mailing input {
   padding: 11px 10px 9px 10px;
@@ -218,6 +223,10 @@ strong {
 .gigs dd {
   margin-top: 5px;
   float: left;
+}
+
+.social img {
+  display: inline;
 }
 
 #tweet-container {
