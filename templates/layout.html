@@ -13,9 +13,9 @@
         <meta property="og:site_name" content="Flood">
         <meta property="og:description" content="An original blues rock band based in Plymouth, UK">
 
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/pocketgrid.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        {% assets "css_all" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {% endassets %}
     </head>
     <body>
         <div class="container">
@@ -41,8 +41,9 @@
             </div>
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="{{ url_for('static', filename='js/moment.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {% assets "js_all" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
         <script>
 
             $(function() {

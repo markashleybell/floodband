@@ -6,6 +6,7 @@ from birdy.twitter import AppClient, TwitterAuthError
 from werkzeug.contrib.cache import MemcachedCache
 import time
 from createsend import *
+from flask.ext.assets import Environment, Bundle
 
 
 class ApiResponse(Response):
@@ -25,6 +26,12 @@ class TwitterClient(AppClient):
 app = Flask(__name__)
 # Load configuration
 app.config.from_pyfile('config.cfg')
+# Set up asset bundling
+assets = Environment(app)
+js = Bundle('js/moment.js', 'js/main.js', filters='jsmin', output='js/all.js')
+css = Bundle('css/reset.css', 'css/pocketgrid.css', 'css/main.css', filters='cssmin', output='css/all.css')
+assets.register('js_all', js)
+assets.register('css_all', css)
 # Set up cache
 cache = MemcachedCache(['127.0.0.1:11211'])
 

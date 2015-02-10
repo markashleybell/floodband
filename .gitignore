@@ -2,3 +2,4 @@
 *.cfg
 *.cfg.live
 .DS_Store
+.webassets-cache

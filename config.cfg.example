@@ -1,3 +1,5 @@
+# Site settings
+ASSETS_DEBUG = True
 # Twitter credentials
 TWITTER_CONSUMER_KEY = 'XXXXXXXXX'
 TWITTER_CONSUMER_SECRET = 'XXXXXXXXX'
