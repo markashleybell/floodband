@@ -2,13 +2,17 @@ var FloodSite = (function($, window, moment) {
     var _sound = null;
     var _soundcloudid = null;
     var _trackLinkClick = function(category, action, label, callback) {
-        ga('send', {
-            'hitType': 'event',
-            'eventCategory': category,
-            'eventAction': action,
-            'eventLabel': label,
-            'hitCallback': callback
-        });
+        if(typeof ga !== 'undefined') {
+            ga('send', {
+                'hitType': 'event',
+                'eventCategory': category,
+                'eventAction': action,
+                'eventLabel': label,
+                'hitCallback': callback
+            });
+        } else {
+            callback();
+        }
     };
     var _activateUrls = function(text) {
         return text.replace(/\s(https?:\/\/[^\s\<]+)(\s)?/gi, ' <a href="$1">$1</a>$2');
