@@ -54,13 +54,12 @@ def statuses():
     statuses = cache.get('statuses')
 
     if statuses is None:
-        print 'Not Cached'
         consumer_key = app.config['TWITTER_CONSUMER_KEY']
         consumer_secret = app.config['TWITTER_CONSUMER_SECRET']
 
+        # Uncomment if we need to get a new access token
         # client = TwitterClient(consumer_key, consumer_secret)
         # access_token = client.get_access_token()
-
         # return jsonify({ 'key': access_token });
 
         access_token = app.config['TWITTER_ACCESS_TOKEN']
@@ -75,10 +74,6 @@ def statuses():
             cache.set('statuses', statuses, timeout=1 * 60)
         except TwitterAuthError as e:
             return jsonify({ 'error': e._msg, 'error_code': e.error_code, 'status_code': e.status_code, 'headers': e.headers, 'resource_url': e.resource_url })
-
-    # projection = [{ 'created_at': datetime.strftime('%Y-%m-%d %H:%M:%S', datetime.strptime(s['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), 'text': s['text'] } for s in statuses]
-    # projection = [{ 'created_at': datetime.strptime(s['created_at'],'%a %b %d %H:%M:%S +0000 %Y'), 'text': s['text'] } for s in statuses]
-    # projection = [{ 'created_at': time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(s['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), 'text': s['text'] } for s in statuses]
 
     projection = [{ 'created_at': s['created_at'], 'text': s['text'] } for s in statuses]
 
