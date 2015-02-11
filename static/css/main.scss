@@ -222,21 +222,6 @@ strong {
     }
 }
 
-.gigs {
-    overflow: auto;
-    dt {
-        margin-top: 5px;
-        font-weight: bold;
-        float: left;
-        clear: left;
-        width: 110px;
-    }
-    dd {
-        margin-top: 5px;
-        float: left;
-    }
-}
-
 .social {
     img {
         display: inline;
@@ -265,6 +250,23 @@ strong {
     text-transform: uppercase;
     text-align: center;
     padding-bottom: 40px;
+}
+
+@media (min-width: 500px) {
+    .gigs {
+        overflow: auto;
+        dt {
+            margin-top: 5px;
+            font-weight: bold;
+            float: left;
+            clear: left;
+            width: 110px;
+        }
+        dd {
+            margin-top: 5px;
+            float: left;
+        }
+    }
 }
 
 @media (min-width: 768px) {
