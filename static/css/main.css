@@ -213,6 +213,16 @@ strong {
     width: auto; }
     .mailing input[type=submit] {
       margin-top: 0; } }
+.tinynav {
+  width: 100%;
+  border: solid 1px #169DAE;
+  border-radius: 3px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #38c0f2;
+  padding: 10px 10px 8px 10px; }
+
 @media (min-width: 722px) {
   .tinynav {
     display: none; }
