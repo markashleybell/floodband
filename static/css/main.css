@@ -196,18 +196,6 @@ strong {
   padding-bottom: 40px; }
 
 @media (min-width: 500px) {
-  .gigs {
-    overflow: auto; }
-    .gigs dt {
-      margin-top: 5px;
-      font-weight: bold;
-      float: left;
-      clear: left;
-      width: 110px; }
-    .gigs dd {
-      margin-top: 5px;
-      float: left; }
-
   .mailing input {
     display: inline;
     width: auto; }
@@ -238,6 +226,18 @@ strong {
   .content-half {
     width: 50%; } }
 @media (min-width: 842px) {
+  .gigs {
+    overflow: auto; }
+    .gigs dt {
+      margin-top: 5px;
+      font-weight: bold;
+      float: left;
+      clear: left;
+      width: 110px; }
+    .gigs dd {
+      margin-top: 5px;
+      float: left; }
+
   .nav li {
     margin-right: 0; }
     .nav li:before {

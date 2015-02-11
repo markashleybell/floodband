@@ -251,20 +251,7 @@ strong {
 }
 
 @media (min-width: 500px) {
-    .gigs {
-        overflow: auto;
-        dt {
-            margin-top: 5px;
-            font-weight: bold;
-            float: left;
-            clear: left;
-            width: 110px;
-        }
-        dd {
-            margin-top: 5px;
-            float: left;
-        }
-    }
+    
     .mailing {
         input {
             display: inline;
@@ -312,6 +299,20 @@ strong {
 }
 
 @media (min-width: 842px) {
+    .gigs {
+        overflow: auto;
+        dt {
+            margin-top: 5px;
+            font-weight: bold;
+            float: left;
+            clear: left;
+            width: 110px;
+        }
+        dd {
+            margin-top: 5px;
+            float: left;
+        }
+    }
     .nav li {
         margin-right: 0;
         &:before {
