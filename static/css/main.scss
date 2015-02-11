@@ -207,10 +207,13 @@ strong {
 
 .mailing {
     input {
+        display: block;
+        width: 100%;
         padding: 11px 10px 9px 10px;
         border: solid 1px #040D11;
         border-radius: 3px;
         &[type=submit] {
+            margin-top: 10px;
             border: solid 1px #040D11;
             background-color: #040D11;
             text-transform: uppercase;
@@ -265,6 +268,15 @@ strong {
         dd {
             margin-top: 5px;
             float: left;
+        }
+    }
+    .mailing {
+        input {
+            display: inline;
+            width: auto;
+            &[type=submit] {
+                margin-top: 0;
+            }
         }
     }
 }

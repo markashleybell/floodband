@@ -161,10 +161,13 @@ strong {
       font-size: 13px; }
 
 .mailing input {
+  display: block;
+  width: 100%;
   padding: 11px 10px 9px 10px;
   border: solid 1px #040D11;
   border-radius: 3px; }
   .mailing input[type=submit] {
+    margin-top: 10px;
     border: solid 1px #040D11;
     background-color: #040D11;
     text-transform: uppercase;
@@ -206,7 +209,13 @@ strong {
       width: 110px; }
     .gigs dd {
       margin-top: 5px;
-      float: left; } }
+      float: left; }
+
+  .mailing input {
+    display: inline;
+    width: auto; }
+    .mailing input[type=submit] {
+      margin-top: 0; } }
 @media (min-width: 768px) {
   .content-half {
     width: 50%; }
