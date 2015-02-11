@@ -28,7 +28,7 @@ app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
 # Set up asset bundling
 assets = Environment(app)
-js = Bundle('js/moment.js', 'js/main.js', filters='jsmin', output='js/all.js')
+js = Bundle('js/tinynav.js', 'js/moment.js', 'js/main.js', filters='jsmin', output='js/all.js')
 css = Bundle('css/reset.css', 'css/pocketgrid.css', 'css/main.css', filters='cssmin', output='css/all.css')
 assets.register('js_all', js)
 assets.register('css_all', css)

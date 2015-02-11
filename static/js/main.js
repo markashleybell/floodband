@@ -18,6 +18,7 @@ var FloodSite = (function($, window, moment) {
         return text.replace(/\s(https?:\/\/[^\s\<]+)(\s)?/gi, ' <a href="$1">$1</a>$2');
     };
     var _init = function() {
+        $('.nav ul').tinyNav();
         $.ajax({
             url: '/statuses',
             data: {},

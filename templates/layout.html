@@ -25,13 +25,13 @@
                 </div>
                 <div class="nav block">
                     <ul>
-                        <li><a href="/" title="Home page">Home</a></li>
+                        <li{% if request.endpoint == 'index' %} class="selected"{% endif %}><a href="/" title="Home page">Home</a></li>
                         <li><a class="social" title="SoundCloud" href="https://soundcloud.com/floodbanduk">Music</a></li>
-                        <li><a href="/links" title="Links">Links</a></li>
+                        <li{% if request.endpoint == 'links' %} class="selected"{% endif %}><a href="/links" title="Links">Links</a></li>
                         <li><a class="social" title="Twitter" href="https://twitter.com/floodbanduk">Twitter</a></li>
                         <li><a class="social" title="Facebook" href="https://facebook.com/floodbanduk">Facebook</a></li>
                         <li><a class="social" title="Instagram" href="https://instagram.com/floodbanduk">Instagram</a></li>
-                        <li><a href="/contact" title="Contact the band">Contact</a></li>
+                        <li{% if request.endpoint == 'contact' %} class="selected"{% endif %}><a href="/contact" title="Contact the band">Contact</a></li>
                     </ul>
                 </div>
                 {% block body %}{% endblock %}
