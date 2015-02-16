@@ -26,7 +26,7 @@
                 <div class="nav block">
                     <ul>
                         <li{% if request.endpoint == 'index' %} class="selected"{% endif %}><a href="/" title="Home page">Home</a></li>
-                        <li><a class="social" title="SoundCloud" href="https://soundcloud.com/floodbanduk">Music</a></li>
+                        <li{% if request.endpoint == 'music' %} class="selected"{% endif %}><a href="/music">Music</a></li>
                         <li{% if request.endpoint == 'links' %} class="selected"{% endif %}><a href="/links" title="Links">Links</a></li>
                         <li><a class="social" title="Twitter" href="https://twitter.com/floodbanduk">Twitter</a></li>
                         <li><a class="social" title="Facebook" href="https://facebook.com/floodbanduk">Facebook</a></li>
