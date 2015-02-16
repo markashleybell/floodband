@@ -1,5 +1,16 @@
 {% extends "layout.html" %}
 
+{% block meta %}
+
+<title>Contact Flood</title>
+<meta property="og:title" content="Flood">
+<meta property="og:image" content="http://floodband.uk{{ url_for('static', filename='img/logo-blue.jpg') }}">
+<meta property="og:url" content="http://floodband.uk/contact"/>
+<meta property="og:site_name" content="Flood">
+<meta property="og:description" content="Get in touch with Flood">
+
+{% endblock %}
+
 {% block body %}
 
 <div class="content-full block">

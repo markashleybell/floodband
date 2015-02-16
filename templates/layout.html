@@ -3,16 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Flood: an original blues rock band based in Plymouth, UK</title>
+        {% block meta %}{% endblock %}
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta property="og:title" content="Flood">
-        <meta property="og:image" content="http://floodband.uk{{ url_for('static', filename='img/logo-blue.jpg') }}">
-        <meta property="og:url" content="http://floodband.uk"/>
-        <meta property="og:site_name" content="Flood">
-        <meta property="og:description" content="An original blues rock band based in Plymouth, UK">
-
         {% assets "css_all" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}">
         {% endassets %}

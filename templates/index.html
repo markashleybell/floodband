@@ -1,5 +1,16 @@
 {% extends "layout.html" %}
 
+{% block meta %}
+
+<title>Flood: an original blues rock band based in Plymouth, UK</title>
+<meta property="og:title" content="Flood">
+<meta property="og:image" content="http://floodband.uk{{ url_for('static', filename='img/logo-blue.jpg') }}">
+<meta property="og:url" content="http://floodband.uk"/>
+<meta property="og:site_name" content="Flood">
+<meta property="og:description" content="An original blues rock band based in Plymouth, UK">
+
+{% endblock %}
+
 {% block body %}
 
 <div class="content-half block">
