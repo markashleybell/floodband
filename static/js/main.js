@@ -14,9 +14,6 @@ var FloodSite = (function($, window, moment) {
             callback();
         }
     };
-    var _activateUrls = function(text) {
-        return text.replace(/\s(https?:\/\/[^\s\<]+)(\s)?/gi, ' <a href="$1">$1</a>$2');
-    };
     var _init = function() {
         $('.nav ul').tinyNav();
         $.ajax({
@@ -27,7 +24,7 @@ var FloodSite = (function($, window, moment) {
             success: function(data, status, request) {
                 var output = [];
                 $.each(data.statuses, function(i, item) {
-                    output.push('<p><span>' + moment(item.created_at).fromNow() + '</span>' + _activateUrls(item.text) + '</p>');
+                    output.push('<p><span>' + moment(item.created_at).fromNow() + '</span>' + item.text + '</p>');
                 });
                 $('#tweet-container').html(output.join('') + '<p><a class="social" title="Twitter" href="https://twitter.com/floodbanduk">Follow Flood on Twitter</a></p>');
             },

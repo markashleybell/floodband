@@ -1,3 +1,4 @@
+import re
 import json
 import soundcloud
 from flask import Flask, Response, render_template, request, send_from_directory, redirect, url_for, jsonify, flash
@@ -87,7 +88,15 @@ def statuses():
         except TwitterAuthError as e:
             return jsonify({ 'error': e._msg, 'error_code': e.error_code, 'status_code': e.status_code, 'headers': e.headers, 'resource_url': e.resource_url })
 
-    projection = [{ 'created_at': s['created_at'], 'text': s['text'] } for s in statuses]
+    for s in statuses:
+        s['text'] = re.sub(r"(@([^\s\:]+))", r'<a href="https://twitter.com/\2">\1</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
+        for u in s['entities']['urls']:
+            s['text'] = re.sub(u['url'], r'<a href="' + u['expanded_url'] + '">' + u['display_url'] + '</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
+        if 'media' in s['entities']:
+            for u in s['entities']['media']:
+                s['text'] = re.sub(u['url'], '', s['text'], 0, re.IGNORECASE | re.MULTILINE)
+
+    projection = [{ 'created_at': s['created_at'], 'text': s['text'].strip() } for s in statuses]
 
     return jsonify({ 'statuses': projection[:4] })
 
