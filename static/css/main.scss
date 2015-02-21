@@ -51,6 +51,16 @@
     /* font-size: 120%; */
 }
 
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
 .icon-play:before { content: '\e800'; }
 .icon-stop:before { content: '\e801'; }
 .icon-pause:before { content: '\e802'; }
@@ -227,6 +237,12 @@ strong {
 }
 
 .gigs {
+    h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: bold;
+    }
     dt {
         font-weight: bold;
     }

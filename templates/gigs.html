@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+
+<title>Flood Gigs</title>
+<meta property="og:title" content="Flood Gigs">
+<meta property="og:image" content="http://floodband.uk{{ url_for('static', filename='img/logo-blue.jpg') }}">
+<meta property="og:url" content="http://floodband.uk"/>
+<meta property="og:site_name" content="Flood">
+<meta property="og:description" content="An original blues rock band based in Plymouth, UK">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="content-half block">
+    <div class="gigs box">
+        <h1>Gigs</h1>
+        <p>All gigs, past and future.</p>
+        <h2>2014</h2>
+        <dl class="cf">
+            <dt class="gig-date">Sat 12th Jul, 9pm</dt>
+            <dd><a href="https://www.facebook.com/unioninnsaltash" class="external" title="The Union Inn, Saltash">The Union Inn, Saltash</a></dd>
+            <dt class="gig-date">Sat 6th Sep, 9pm</dt>
+            <dd><a href="https://www.facebook.com/unioninnsaltash" class="external" title="The Union Inn, Saltash">The Union Inn, Saltash</a></dd>
+            <dt class="gig-date">Thu 13th Nov, 9pm</dt>
+            <dd><a href="https://www.facebook.com/pages/The-Nowhere-Inn/185989338077914" class="external" title="The Nowhere Inn, Plymouth">The Nowhere Inn, Plymouth</a></dd>
+            <dt class="gig-date">Thu 20th Nov, 9pm</dt>
+            <dd><a href="https://www.facebook.com/mutleyjunction" class="external" title="The Junction, Plymouth">The Junction, Plymouth</a></dd>
+        </dl>
+        <h2>2015</h2>
+        <dl class="cf">
+            <dt class="gig-date">Fri 30th Jan, 9pm</dt>
+            <dd><a href="https://www.facebook.com/thecarriersinnbude" class="external" title="The Carriers Inn, Bude">The Carriers Inn, Bude</a></dd>
+            <dt class="gig-date">Mon 16th Feb, 9pm</dt>
+            <dd><a href="https://www.facebook.com/mutleyjunction" class="external" title="The Junction, Plymouth">The Junction, Plymouth</a></dd>
+            <dt class="gig-date">Thu 19th Feb, 9pm</dt>
+            <dd><a href="http://www.thebarley.com/" class="external" title="The Barley Sheaf, Liskeard">The Barley Sheaf, Liskeard</a></dd>
+            <dt class="gig-date">Sat 28th Feb, 5pm</dt>
+            <dd><a href="https://www.facebook.com/pages/The-Nowhere-Inn/185989338077914" class="external" title="The Nowhere Inn, Plymouth">The Nowhere Inn, Plymouth</a></dd>
+            <dt class="gig-date">Sun 1st Mar, 2pm</dt>
+            <dd><a href="http://www.thistlepark.com/" class="external" title="The Thistle Park Tavern, Plymouth">The Thistle Park Tavern, Plymouth</a></dd>
+            <dt class="gig-date">Fri 6th Mar, 9pm</dt>
+            <dd><a href="http://www.bluesbarandgrill.co.uk/" class="external" title="The Blues Bar & Grill, Plymouth">The Blues Bar &amp; Grill, Plymouth</a></dd>
+            <dt class="gig-date">Sat 14th Mar, 9pm</dt>
+            <dd><a href="http://www.theglobelooe.co.uk/" class="external" title="The Globe Inn, Looe">The Globe Inn, Looe</a></dd>
+            <dt class="gig-date">Fri 22nd May, 9pm</dt>
+            <dd><a href="http://www.royal-inn.co.uk/" class="external" title="The Royal Inn, Par">The Royal Inn, Par</a></dd>
+            <dt class="gig-date">Fri 5th Jun, 9pm</dt>
+            <dd><a href="https://www.facebook.com/thecarriersinnbude" class="external" title="The Carriers Inn, Bude">The Carriers Inn, Bude</a></dd>
+            <dt class="gig-date">Sun 9th Aug, TBA</dt>
+            <dd><a href="http://www.bluesandroots.co.uk/" class="external" title="Labyrinth Festival, Looe">Labyrinth Festival, Looe</a></dd>
+        </dl>
+    </div>
+</div>
+
+<div class="content-half block">
+    <div class="video box">
+        <h1>Live Video</h1>
+        <div class="embed-container"><iframe src="https://www.youtube.com/embed/Ya31RSTHhCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="mailing box">
+        <h1>Mailing List</h1>
+        <p>Join our mailing list for (very!) occasional updates:</p>
+        <form id="mailing-list-subscribe" action="/subscribe" method="post">
+            <p><input type="text" name="email" value="" placeholder="Email address"> 
+            <input class="button-primary" type="submit" value="Sign Up">
+        </form>
+    </div>
+</div>
+                
+{% endblock %}

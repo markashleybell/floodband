@@ -56,6 +56,11 @@ def contact():
     return render_template('contact.html')
 
 
+@app.route('/gigs')
+def gigs():
+    return render_template('gigs.html')
+
+
 @app.route('/statuses')
 def statuses():
     statuses = cache.get('statuses')
