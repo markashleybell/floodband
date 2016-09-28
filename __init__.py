@@ -8,6 +8,9 @@ from werkzeug.contrib.cache import MemcachedCache
 import time
 from createsend import *
 from flask.ext.assets import Environment, Bundle
+from tornado.wsgi import WSGIContainer
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
 
 
 class ApiResponse(Response):
@@ -132,4 +135,7 @@ def favicon():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    http_server = HTTPServer(WSGIContainer(app))
+    http_server.listen(os.environ['HTTP_PLATFORM_PORT'])
+    loop = IOLoop.instance()
+    loop.start()
