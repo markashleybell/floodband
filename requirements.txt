@@ -15,5 +15,6 @@ requests==2.5.1
 requests-oauthlib==0.4.2
 simplejson==3.6.5
 soundcloud==0.4.1
+tornado==4.4.1
 webassets==0.10.1
 wsgiref==0.1.2
