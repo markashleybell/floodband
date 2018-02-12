@@ -3,3 +3,4 @@
 *.cfg.live
 .DS_Store
 .webassets-cache
+Web.config

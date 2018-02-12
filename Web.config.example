@@ -9,10 +9,10 @@
                  modules="httpPlatformHandler"
                  resourceType="Unspecified" />
         </handlers>
-        <httpPlatform processPath="E:\Inetpub\myapps\floodband-env\floodband\run.bat"
+        <httpPlatform processPath="PATH_TO\run.bat"
                       arguments=""
                       stdoutLogEnabled="true"
-                      stdoutLogFile="E:\Inetpub\myapps\floodband-env\logs\floodband.log"
+                      stdoutLogFile="PATH_TO\logs\floodband.log"
                       startupTimeLimit="20"
                       requestTimeout="00:05:00"
                       processesPerApplication="1">
