@@ -8,7 +8,7 @@ from birdy.twitter import AppClient, TwitterAuthError
 from werkzeug.contrib.cache import MemcachedCache
 import time
 from createsend import *
-from flask.ext.assets import Environment, Bundle
+from flask_assets import Environment, Bundle
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
@@ -93,7 +93,7 @@ def statuses():
             return jsonify({ 'error': e._msg, 'error_code': e.error_code, 'status_code': e.status_code, 'headers': e.headers, 'resource_url': e.resource_url })
 
     for s in statuses:
-        s['text'] = re.sub("(@([^\s\:\,\.\u2014]+))", r'<a href="https://twitter.com/\2">\1</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
+        s['text'] = re.sub(r"(@([^\s\:\,\.\u2014]+))", r'<a href="https://twitter.com/\2">\1</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
         for u in s['entities']['urls']:
             s['text'] = re.sub(u['url'], r'<a href="' + u['expanded_url'] + '">' + u['display_url'] + '</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
         if 'media' in s['entities']:
@@ -121,7 +121,7 @@ def tracks():
 def subscribe():
     email = request.form['email']
     subscriber = Subscriber({'api_key': app.config['CM_CLIENT_API_KEY']})
-    result = subscriber.add(app.config['CM_LIST_ID'], email, '', [], True)
+    subscriber.add(app.config['CM_LIST_ID'], email, '', [], True)
     return jsonify({ 'success': True })
 
 
