@@ -136,7 +136,8 @@ def favicon():
 
 
 if __name__ == '__main__':
+    port = os.environ['HTTP_PLATFORM_PORT'] if 'HTTP_PLATFORM_PORT' in os.environ else 8000 
     http_server = HTTPServer(WSGIContainer(app))
-    http_server.listen(os.environ['HTTP_PLATFORM_PORT'])
+    http_server.listen(port)
     loop = IOLoop.instance()
     loop.start()
