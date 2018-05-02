@@ -17,5 +17,17 @@
                       requestTimeout="00:05:00"
                       processesPerApplication="1">
         </httpPlatform>
+        <rewrite>
+            <rules>
+                <rule name="Canonical Hostname">
+                    <match url="(.*)" />
+                    <conditions logicalGrouping="MatchAny">
+                        <add input="{HTTP_HOST}" pattern="^floodband\.uk$" negate="true" />
+			            <add input="{HTTPS}" pattern="^OFF$" />
+                    </conditions>
+                    <action type="Redirect" url="https://floodband.uk/{R:1}" />
+                </rule>
+            </rules>
+        </rewrite>
     </system.webServer>
 </configuration>

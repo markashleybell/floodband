@@ -1,6 +1,14 @@
-*.sublime-workspace
+__pycache__
+*.pyc
+*.db
+.DS_Store
+*.log
 *.cfg
 *.cfg.live
-.DS_Store
+*.cfg.local
+rss.xml
+*.sublime-workspace
+venv/
+node_modules/
 .webassets-cache
 Web.config
