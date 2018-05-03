@@ -327,3 +327,6 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Ignore local and production .NET Core configuration
+appsettings.*.json
