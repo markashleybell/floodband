@@ -47,30 +47,31 @@ namespace floodband.Controllers
                 var text = s.FullText;
                 return new {
                     created_at = s.CreatedAt,
-                    text = s.FullText
+                    text = FormatStatusText(s)
                 };
             });
 
             return Json(new {
                 statuses = transformedStatuses
             });
-
-            //        s['text'] = re.sub(r"(@([^\s\:\,\.\u2014]+))", r'<a href="https://twitter.com/\2">\1</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
-            //        for u in s['entities']['urls']:
-            //            s['text'] = re.sub(u['url'], r'<a href="' + u['expanded_url'] + '">' + u['display_url'] + '</a>', s['text'], 0, re.IGNORECASE | re.MULTILINE)
-            //        if 'media' in s['entities']:
-            //            for u in s['entities']['media']:
-            //                s['text'] = re.sub(u['url'], '', s['text'], 0, re.IGNORECASE | re.MULTILINE)
-
-            //    projection = [{ 'created_at': s['created_at'], 'text': s['text'].strip() }
-            //            for s in statuses]
         }
 
         private string FormatStatusText(Status status)
         {
-            var text = status.FullText;
-            var transformedText = Regex.Replace(text, @"(@([^\s\:\,\.\u2014]+))", @"<a href=""https://twitter.com/\2"">\1</a>");
-            return transformedText;
+            var options = RegexOptions.IgnoreCase | RegexOptions.Multiline;
+
+            // Replace Twitter handles with profile links
+            var text = Regex.Replace(status.FullText, @"(@([^\s\:\,\.\u2014]+))", @"<a href=""https://twitter.com/$2"">$1</a>");
+
+            // Replace shortened links with actual URLs
+            foreach (var link in status.Entities.UrlEntities)
+                text = Regex.Replace(text, link.Url, $@"<a href=""{link.ExpandedUrl}"">{link.DisplayUrl}</a>", options);
+
+            // Replace image links with something a bit more obvious
+            foreach (var media in status.Entities.MediaEntities)
+                text = Regex.Replace(text, media.Url, $@"<a href=""{media.MediaUrlHttps}"">View Photo</a>", options);
+
+            return text;
         }
     }
 }

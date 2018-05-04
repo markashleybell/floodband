@@ -13,8 +13,10 @@ void Main()
 
     var config = JObject.Parse(File.ReadAllText(@"../appsettings.Development.json"));
 
-    var auth = new SingleUserAuthorizer {
-        CredentialStore = new SingleUserInMemoryCredentialStore {
+    var auth = new SingleUserAuthorizer
+    {
+        CredentialStore = new SingleUserInMemoryCredentialStore
+        {
             ConsumerKey = config["Twitter"]["ConsumerKey"].ToString(),
             ConsumerSecret = config["Twitter"]["ConsumerSecret"].ToString(),
             AccessToken = config["Twitter"]["AccessToken"].ToString(),
@@ -28,8 +30,8 @@ void Main()
         .Where(s => s.Type == StatusType.User && s.TweetMode == TweetMode.Extended)
         // .Select(s => s.FullText)
         .ToList();
-  
-// statuses.Dump();
+
+    // statuses.Dump();
 
     FormatStatusText(statuses[2]).Dump();
     FormatStatusText(statuses[7]).Dump();
@@ -37,8 +39,15 @@ void Main()
 }
 
 private string FormatStatusText(Status status)
-        {
-            var text = status.FullText;
-            var transformedText = Regex.Replace(text, @"(@([^\s\:\,\.\u2014]+))", @"<a href=""https://twitter.com/$2"">$1</a>");
-            return transformedText;
-        }
+{
+    var options = RegexOptions.IgnoreCase | RegexOptions.Multiline;
+    var text = status.FullText;
+    // Replace Twitter handles with profile links
+    text = Regex.Replace(text, @"(@([^\s\:\,\.\u2014]+))", @"<a href=""https://twitter.com/$2"">$1</a>");
+    foreach(var link in status.Entities.UrlEntities)
+        text = Regex.Replace(text, link.Url,  $@"<a href=""{link.ExpandedUrl}"">{link.DisplayUrl}</a>", options);   
+    foreach(var media in status.Entities.MediaEntities)
+        text = Regex.Replace(text, media.Url,  $@"<a href=""{media.MediaUrlHttps}"">{media.MediaUrlHttps}</a>", options);   
+    return text;
+}
+
