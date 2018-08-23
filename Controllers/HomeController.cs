@@ -10,8 +10,8 @@ namespace floodband.Controllers
 {
     public class HomeController : Controller
     {
-        private IConfiguration _configuration;
-        private MemoryCache _cache;
+        private readonly IConfiguration _configuration;
+        private readonly MemoryCache _cache;
 
         public HomeController(IConfiguration configuration) =>
             _configuration = configuration;
