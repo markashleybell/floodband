@@ -1,20 +1,25 @@
-﻿using LinqToTwitter;
+﻿using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using LinqToTwitter;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace floodband.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IConfiguration _configuration;
-        private readonly MemoryCache _cache;
+        private const string _statusesCacheKey = "statuses";
 
-        public HomeController(IConfiguration configuration) =>
+        private readonly IConfiguration _configuration;
+        private readonly IMemoryCache _cache;
+
+        public HomeController(IConfiguration configuration, IMemoryCache cache)
+        {
             _configuration = configuration;
+            _cache = cache;
+        }
 
         public IActionResult Index() => View();
 
@@ -26,34 +31,42 @@ namespace floodband.Controllers
 
         public IActionResult Gigs() => View();
 
-        public IActionResult Statuses()
+        public IActionResult Statuses() => GetStatuses();
+
+        private JsonResult GetStatuses()
         {
-            var auth = new SingleUserAuthorizer {
-                CredentialStore = new SingleUserInMemoryCredentialStore {
-                    ConsumerKey = _configuration.GetSection("Twitter")["ConsumerKey"],
-                    ConsumerSecret = _configuration.GetSection("Twitter")["ConsumerSecret"],
-                    AccessToken = _configuration.GetSection("Twitter")["AccessToken"],
-                    AccessTokenSecret = _configuration.GetSection("Twitter")["AccessTokenSecret"]
-                }
-            };
+            if (!_cache.TryGetValue(_statusesCacheKey, out JsonResult result))
+            {
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(1));
 
-            var twitter = new TwitterContext(auth);
+                var auth = new SingleUserAuthorizer {
+                    CredentialStore = new SingleUserInMemoryCredentialStore {
+                        ConsumerKey = _configuration.GetSection("Twitter")["ConsumerKey"],
+                        ConsumerSecret = _configuration.GetSection("Twitter")["ConsumerSecret"],
+                        AccessToken = _configuration.GetSection("Twitter")["AccessToken"],
+                        AccessTokenSecret = _configuration.GetSection("Twitter")["AccessTokenSecret"]
+                    }
+                };
 
-            var statuses = twitter.Status
-                .Where(s => s.Type == StatusType.User && s.TweetMode == TweetMode.Extended)
-                .Take(4).ToList();
+                var twitter = new TwitterContext(auth);
 
-            var transformedStatuses = statuses.Select(s => {
-                var text = s.FullText;
-                return new {
+                var statuses = twitter.Status
+                    .Where(s => s.Type == StatusType.User && s.TweetMode == TweetMode.Extended)
+                    .Take(4)
+                    .ToList();
+
+                var transformedStatuses = statuses.Select(s => new {
                     created_at = s.CreatedAt,
                     text = FormatStatusText(s)
-                };
-            });
+                });
 
-            return Json(new {
-                statuses = transformedStatuses
-            });
+                result = Json(new { statuses = transformedStatuses });
+
+                _cache.Set(_statusesCacheKey, result, cacheEntryOptions);
+            }
+
+            return result;
         }
 
         private string FormatStatusText(Status status)

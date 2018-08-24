@@ -12,8 +12,11 @@ namespace floodband
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services) =>
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMemoryCache();
             services.AddMvc();
+        }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
