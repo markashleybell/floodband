@@ -65,11 +65,15 @@ namespace floodband.Controllers
 
             // Replace shortened links with actual URLs
             foreach (var link in status.Entities.UrlEntities)
+            {
                 text = Regex.Replace(text, link.Url, $@"<a href=""{link.ExpandedUrl}"">{link.DisplayUrl}</a>", options);
+            }
 
             // Replace image links with something a bit more obvious
             foreach (var media in status.Entities.MediaEntities)
+            {
                 text = Regex.Replace(text, media.Url, $@"<a href=""{media.MediaUrlHttps}"">View Photo</a>", options);
+            }
 
             return text;
         }
