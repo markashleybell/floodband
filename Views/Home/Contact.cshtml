@@ -1,17 +1,11 @@
-{% extends "layout.html" %}
-
-{% block meta %}
-
-<title>Contact Flood</title>
-<meta property="og:title" content="Flood">
-<meta property="og:image" content="http://floodband.uk{{ url_for('static', filename='img/logo-blue.jpg') }}">
-<meta property="og:url" content="http://floodband.uk/contact"/>
-<meta property="og:site_name" content="Flood">
-<meta property="og:description" content="Get in touch with Flood">
-
-{% endblock %}
-
-{% block body %}
+﻿@section meta {
+    <title>Contact Flood</title>
+    <meta property="og:title" content="Flood">
+    <meta property="og:image" content="https://floodband.uk/img/logo-blue.jpg">
+    <meta property="og:url" content="https://floodband.uk/contact">
+    <meta property="og:site_name" content="Flood">
+    <meta property="og:description" content="Get in touch with Flood">
+}
 
 <div class="content-full block">
     <div class="box">
@@ -22,5 +16,3 @@
         <p>Facebook: <a class="social" title="Facebook" href="https://facebook.com/floodbanduk">https://facebook.com/floodbanduk</a></p>
     </div>
 </div>
-                
-{% endblock %}

@@ -1,17 +1,11 @@
-{% extends "layout.html" %}
-
-{% block meta %}
-
-<title>Flood Gigs</title>
-<meta property="og:title" content="Flood Gigs">
-<meta property="og:image" content="http://floodband.uk{{ url_for('static', filename='img/logo-blue.jpg') }}">
-<meta property="og:url" content="http://floodband.uk"/>
-<meta property="og:site_name" content="Flood">
-<meta property="og:description" content="An original blues rock band based in Plymouth, UK">
-
-{% endblock %}
-
-{% block body %}
+﻿@section meta {
+    <title>Flood Gigs</title>
+    <meta property="og:title" content="Flood Gigs">
+    <meta property="og:image" content="https://floodband.uk/img/logo-blue.jpg">
+    <meta property="og:url" content="https://floodband.uk">
+    <meta property="og:site_name" content="Flood">
+    <meta property="og:description" content="An original blues rock band based in Plymouth, UK">
+}
 
 <div class="content-half block">
     <div class="gigs box">
@@ -157,6 +151,8 @@
             <dd><a href="https://www.facebook.com/thefishermansarmslooe" class="external" title="The Fisherman's Arms, Looe">The Fisherman's Arms, Looe</a></dd>
             <dt class="gig-date">Sat 11th Aug, 9pm</dt>
             <dd><a href="https://www.facebook.com/thefishermansarmslooe" class="external" title="The Fisherman's Arms, Looe">The Fisherman's Arms, Looe</a></dd>
+            <dt class="gig-date">Sat 1st Sep, TBA</dt>
+            <dd><a href="https://www.facebook.com/unioninnsaltash" class="external" title="The Union Inn, Saltash">The Union Inn Charity Ale & Music Festival</a></dd>
             <dt class="gig-date">Fri 7th Sep, 9pm</dt>
             <dd><a href="https://www.facebook.com/unioninnsaltash" class="external" title="The Union Inn, Saltash">The Union Inn, Saltash</a></dd>
             <dt class="gig-date">Sat 8th Sep, 9pm</dt>
@@ -178,10 +174,10 @@
         <h1>Mailing List</h1>
         <p>Join our mailing list for (very!) occasional updates:</p>
         <form id="mailing-list-subscribe" action="/subscribe" method="post">
-            <p><input type="text" name="email" value="" placeholder="Email address"> 
-            <input class="button-primary" type="submit" value="Sign Up">
+            <p>
+                <input type="text" name="email" value="" placeholder="Email address">
+                <input class="button-primary" type="submit" value="Sign Up">
+            </p>
         </form>
     </div>
 </div>
-                
-{% endblock %}

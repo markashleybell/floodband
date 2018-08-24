@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <ApplicationIcon />
+        <OutputType>Exe</OutputType>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DocumentationFile>bin\Debug\netcoreapp2.1\floodband.xml</DocumentationFile>
+        <CodeAnalysisRuleSet>floodband.ruleset</CodeAnalysisRuleSet>
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DocumentationFile>bin\Release\netcoreapp2.1\floodband.xml</DocumentationFile>
+        <CodeAnalysisRuleSet>floodband.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="tools\**" />
+        <Content Remove="tools\**" />
+        <EmbeddedResource Remove="tools\**" />
+        <None Remove="tools\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="web.Release.config" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="linqtotwitter" Version="5.0.0-beta3" />
+        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.3" />
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.DotNet.Xdt.Tools" Version="2.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="web.Release.config" />
+    </ItemGroup>
+
+    <Target Name="ApplyXdtConfigTransform" BeforeTargets="_TransformWebConfig">
+        <PropertyGroup>
+            <_SourceWebConfig>$(MSBuildThisFileDirectory)web.config</_SourceWebConfig>
+            <_XdtTransform>$(MSBuildThisFileDirectory)web.$(Configuration).config</_XdtTransform>
+            <_TargetWebConfig>$(PublishDir)web.config</_TargetWebConfig>
+        </PropertyGroup>
+        <Exec Command="dotnet transform-xdt --xml &quot;$(_SourceWebConfig)&quot; --transform &quot;$(_XdtTransform)&quot; --output &quot;$(_TargetWebConfig)&quot;" Condition="Exists('$(_XdtTransform)')" />
+    </Target>
+
+</Project>
