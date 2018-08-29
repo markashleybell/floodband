@@ -15,13 +15,13 @@
             </div>
             <div class="nav block">
                 <ul>
-                    <li @(Context.Request.Path == "/" ? "class=\"selected\"" : "")><a href="/" title="Home page">Home</a></li>
-                    <li @(Context.Request.Path == "/music" ? "class=\"selected\"" : "")><a href="/music">Music</a></li>
-                    <li @(Context.Request.Path == "/links" ? "class=\"selected\"" : "")><a href="/links" title="Links">Links</a></li>
+                    <li @Html.Raw(Context.Request.Path == "/" ? "class=\"selected\"" : "")><a href="/" title="Home page">Home</a></li>
+                    <li @Html.Raw(Context.Request.Path == "/music" ? "class=\"selected\"" : "")><a href="/music">Music</a></li>
+                    <li @Html.Raw(Context.Request.Path == "/links" ? "class=\"selected\"" : "")><a href="/links" title="Links">Links</a></li>
                     <li><a class="social" title="Twitter" href="https://twitter.com/floodbanduk">Twitter</a></li>
                     <li><a class="social" title="Facebook" href="https://facebook.com/floodbanduk">Facebook</a></li>
                     <li><a class="social" title="Instagram" href="https://instagram.com/floodbanduk">Instagram</a></li>
-                    <li @(Context.Request.Path == "/contact" ? "class=\"selected\"" : "")><a href="/contact" title="Contact the band">Contact</a></li>
+                    <li @Html.Raw(Context.Request.Path == "/contact" ? "class=\"selected\"" : "")><a href="/contact" title="Contact the band">Contact</a></li>
                 </ul>
             </div>
             @RenderBody()
