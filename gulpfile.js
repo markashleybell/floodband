@@ -42,29 +42,26 @@ const config = {
     }
 };
 
-gulp.task('compile-sass', () => {
+gulp.task('compile-sass', () =>
     gulp.src(config.sass.sources, { base: './' })
         .pipe(sass(config.sass.options).on('error', sass.logError))
         .pipe(autoprefixer(config.sass.autoprefixerOptions))
-        .pipe(gulp.dest('.'));
-});
+        .pipe(gulp.dest('.')));
 
-gulp.task('bundle-and-minify-css', () => {
+gulp.task('bundle-and-minify-css', () =>
     gulp.src(config.css.sources)
         .pipe(concat('all.css'))
         .pipe(cleanCSS(config.css.options))
-        .pipe(gulp.dest('./wwwroot/css'));
-});
+        .pipe(gulp.dest('./wwwroot/css')));
 
-gulp.task('bundle-and-minify-js', () => {
+gulp.task('bundle-and-minify-js', () =>
     gulp.src(config.js.sources)
         .pipe(concat('all.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./wwwroot/js'));
-});
+        .pipe(gulp.dest('./wwwroot/js')));
 
 gulp.task('watch', () => {
-    gulp.watch(config.sass.sources, ['compile-sass']);
-    gulp.watch(config.css.sources, ['bundle-and-minify-css']);
-    gulp.watch(config.js.sources, ['bundle-and-minify-js']);
+    gulp.watch(config.sass.sources, gulp.series('compile-sass'));
+    gulp.watch(config.css.sources, gulp.series('bundle-and-minify-css'));
+    gulp.watch(config.js.sources, gulp.series('bundle-and-minify-js'));
 });
