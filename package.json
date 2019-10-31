@@ -9,5 +9,11 @@
         "gulp-clean-css": "4.0.0",
         "gulp-concat": "2.6.1",
         "gulp-uglify": "3.0.2"
-    }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "Firefox ESR",
+        "Opera 12.1"
+    ]
 }
