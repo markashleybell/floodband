@@ -22,7 +22,7 @@
     font-weight: normal;
     font-style: normal;
 }
- 
+
 [class^="icon-"]:before, [class*=" icon-"]:before {
     font-family: "icons";
     font-style: normal;
@@ -39,7 +39,7 @@
     /* For safety - reset parent styles, that can break glyph codes*/
     font-variant: normal;
     text-transform: none;
-     
+
     /* fix buttons height, for twitter bootstrap */
     line-height: 1em;
 
@@ -110,13 +110,13 @@ strong {
     padding: 2px 4px;
 }
 
-.container { 
-    max-width: 960px; 
+.container {
+    max-width: 960px;
     margin: 0 20px;
 }
 
-.block-group { 
-    margin: 0 -10px; 
+.block-group {
+    margin: 0 -10px;
 }
 
 .block {
@@ -132,20 +132,20 @@ strong {
     border: solid 1px #169DAE;
 }
 
-.embed-container { 
-    position: relative; 
-    padding-bottom: 56.25%; 
-    height: 0; 
-    overflow: hidden; 
-    max-width: 100%; 
-} 
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
 
-.embed-container iframe, .embed-container object, .embed-container embed { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .header {
@@ -189,7 +189,7 @@ strong {
     }
     a {
         text-decoration: none;
-        color: #000;   
+        color: #000;
         vertical-align: top;
     }
     img.loader {
@@ -283,7 +283,7 @@ strong {
 }
 
 @media (min-width: 500px) {
-    
+
     .mailing {
         input {
             display: inline;
@@ -325,8 +325,8 @@ strong {
 }
 
 @media (min-width: 768px) {
-    .content-half { 
-        width: 50%; 
+    .content-half {
+        width: 50%;
     }
 }
 
@@ -361,7 +361,7 @@ strong {
 }
 
 @media (min-width: 1000px) {
-    .container { 
+    .container {
         margin: 0 auto;
     }
     .header img {
