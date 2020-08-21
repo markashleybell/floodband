@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace floodband
 {
@@ -18,7 +19,7 @@ namespace floodband
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -30,11 +31,12 @@ namespace floodband
             }
 
             app.UseStaticFiles();
+            app.UseRouting();
 
-            app.UseMvc(routes => {
-                routes.MapRoute(
+            app.UseEndpoints(routes => {
+                routes.MapControllerRoute(
                     name: "default",
-                    template: "{action=Index}/{id?}",
+                    pattern: "{action=Index}/{id?}",
                     defaults: new { controller = "Home" }
                 );
             });
